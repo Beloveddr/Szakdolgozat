@@ -1,0 +1,30 @@
+db.create_database('slot1')
+db.create_database('slot2')
+db.create_database('slot3')
+for i in [1,2,3]:
+            doc.create_doc(f"CRDOC stats INDB slot{i}", "id: int, stat: string, value: int")
+            doc.create_doc(f"CRDOC player INDB slot{i}", "id: int, stat: string, value: string")
+
+doc.add(f"name,Solaire INDB {self.save_slot} INTO player")
+doc.add(f"class,Warrior INDB {self.save_slot} INTO player")
+doc.add(f"level,75 INDB {self.save_slot} INTO player")
+doc.add(f"currenthp,0 INDB {self.save_slot} INTO player")
+doc.add(f"souls,0 INDB {self.save_slot} INTO player")
+doc.add(f"humanity,0 INDB {self.save_slot} INTO player")
+doc.add(f"ishuman,False INDB {self.save_slot} INTO player")
+doc.add(f"playermap,map2-1 INDB {self.save_slot} INTO player")
+for i in [1, 2, 3]:
+    doc.add(f"empty,yes INDB slot{i} INTO player")
+
+    doc.create_doc(f"INDB slot{i} CRDOC doors", "id: int, doorid: string, islocked: int, isstuck: int")
+
+    doc.create_doc(f"INDB slot{i} CRDOC ground_objects", "id: int, map: string, ispickedup: int, itemid: int, quantity: int, groundid: int")
+
+    doc.add(f"map2-1,0,2100,1 INDB slot{i} INTO ground_objects")
+
+    doc.create_doc(f"INDB slot{i} CRDOC chests", "id: int, map: string, isopen: int, itemid: int, quantity: int, groundid: int")
+    doc.add(f"map2,0,200,1,0 INDB slot{i} INTO chests")
+
+    doc.create_doc(f"INDB slot{i} CRDOC weapon_inv", "id: int, itemid: int, isequiped: int, slotindex: int, type: string, pathid: int, quantity: string, descriptionid: int, reqid: int, durability: int, level: int, upgrade: string")
+   
+    doc.create_doc(f"INDB slot{i} CRDOC consumable_inv", "id: int, itemid: int, isequiped: int, slotindex: int, type: string, pathid: int, quantity: string, descriptionid: int")
